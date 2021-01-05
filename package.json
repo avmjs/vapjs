@@ -1,21 +1,21 @@
 {
-  "_from": "ethjs",
-  "_id": "ethjs@0.3.6",
+  "_from": "vapjs",
+  "_id": "vapjs@0.3.6",
   "_inBundle": false,
   "_integrity": "sha512-9ojnSkV5XXSM5vo0pKgZpE+SNBPxqSUN0dZmMP5dBZVFOYctRd9tfaZ80Jnde3M4JrfUhhkbG5QFvewitaAY7Q==",
-  "_location": "/ethjs",
+  "_location": "/vapjs",
   "_phantomChildren": {
     "bn.js": "4.11.6",
-    "ethjs-format": "0.2.5",
+    "vapjs-format": "0.2.5",
     "js-sha3": "0.5.5",
     "number-to-bn": "1.7.0"
   },
   "_requested": {
     "type": "tag",
     "registry": true,
-    "raw": "ethjs",
-    "name": "ethjs",
-    "escapedName": "ethjs",
+    "raw": "vapjs",
+    "name": "vapjs",
+    "escapedName": "vapjs",
     "rawSpec": "",
     "saveSpec": null,
     "fetchSpec": "latest"
@@ -24,9 +24,9 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/ethjs/-/ethjs-0.3.6.tgz",
+  "_resolved": "https://registry.npmjs.org/vapjs/-/vapjs-0.3.6.tgz",
   "_shasum": "c0d2b364e32c59d40fc7cd73f8103f370e99ad70",
-  "_spec": "ethjs",
+  "_spec": "vapjs",
   "_where": "/home/nick",
   "author": {
     "name": "Nick Dodson",
@@ -99,18 +99,18 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/ethjs/ethjs-filter/issues"
+    "url": "https://github.com/vapjs/vapjs-filter/issues"
   },
   "bundleDependencies": false,
   "dependencies": {
     "bn.js": "4.11.6",
-    "ethjs-abi": "0.2.1",
-    "ethjs-contract": "0.2.1",
-    "ethjs-filter": "0.1.5",
-    "ethjs-provider-http": "0.1.6",
-    "ethjs-query": "0.3.7",
-    "ethjs-unit": "0.1.6",
-    "ethjs-util": "0.1.3",
+    "vapjs-abi": "0.2.1",
+    "vapjs-contract": "0.2.1",
+    "vapjs-filter": "0.1.5",
+    "vapjs-provider-http": "0.1.6",
+    "vapjs-query": "0.3.7",
+    "vapjs-unit": "0.1.6",
+    "vapjs-util": "0.1.3",
     "js-sha3": "0.5.5",
     "number-to-bn": "1.7.0"
   },
@@ -153,9 +153,9 @@
     "eslint-plugin-import": "1.8.0",
     "eslint-plugin-jsx-a11y": "1.2.0",
     "eslint-plugin-react": "5.1.1",
-    "ethereumjs-testrpc": "3.0.2",
-    "ethjs-account": "0.1.0",
-    "ethjs-signer": "0.1.0",
+    "vaporyjs-testrpc": "3.0.2",
+    "vapjs-account": "0.1.0",
+    "vapjs-signer": "0.1.0",
     "eventsource-polyfill": "0.9.6",
     "istanbul": "0.4.5",
     "json-loader": "0.5.4",
@@ -212,9 +212,9 @@
     "lib",
     "src"
   ],
-  "homepage": "https://github.com/ethjs/ethjs-filter#readme",
+  "homepage": "https://github.com/vapjs/vapjs-filter#readme",
   "keywords": [
-    "ethereum",
+    "vapory",
     "events",
     "rpc"
   ],
@@ -223,11 +223,11 @@
     "lint:eslint": "*.js"
   },
   "main": "lib/index.js",
-  "name": "ethjs",
+  "name": "vapjs",
   "pre-commit": "build",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/ethjs/ethjs.git"
+    "url": "git+ssh://git@github.com/vapjs/vapjs.git"
   },
   "scripts": {
     "build": "npm run build:commonjs && npm run test:lib && npm run build:umd && npm run build:umd:min",

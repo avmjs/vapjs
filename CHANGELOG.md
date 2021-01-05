@@ -12,8 +12,8 @@
 
 # 0.2.7 -- abi updated, format and contract updates
 
-1. Updated ethjs-abi, ethjs-format, ethjs-query, ethjs-contract
-2. The updates will fix some small problems with geth/parity compat
+1. Updated vapjs-abi, vapjs-format, vapjs-query, vapjs-contract
+2. The updates will fix some small problems with gvap/parity compat
 
 # 0.2.6 -- added abi, personal sign/ecrecover
 
@@ -35,7 +35,7 @@
 
 # 0.1.6 -- handle 500 errors better
 
-1. Update ethjs-query
+1. Update vapjs-query
 
 # 0.1.5 -- update unit formatting
 
@@ -45,11 +45,11 @@
 
 1. BN formatting fix
 
-# 0.1.3 -- upgrade ethjs-query
+# 0.1.3 -- upgrade vapjs-query
 
-1. Upgraded ethjs-query
+1. Upgraded vapjs-query
 
-# 0.1.1 -- ethjs
+# 0.1.1 -- vapjs
 
 1. Basic testing
 2. Basic docs

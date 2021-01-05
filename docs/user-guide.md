@@ -1,24 +1,24 @@
 # User Guide
 
-All information for developers using `ethjs` should consult this document.
+All information for developers using `vapjs` should consult this document.
 
 ## Install
 
 ```
-npm install --save ethjs
+npm install --save vapjs
 ```
 
 ## Usage
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('https://ropsten.infura.io'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('https://ropsten.infura.io'));
 
-eth.getBlockByNumber(45300, (err, block) => {
+vap.getBlockByNumber(45300, (err, block) => {
   // result null { ...block data... }
 });
 
-const etherValue = Eth.toWei(72, 'ether');
+const vaporValue = Vap.toWei(72, 'vapor');
 
 // result <BN ...>
 
@@ -31,7 +31,7 @@ const tokenABI = [{
   "type": "function",
 }];
 
-const token = eth.contract(tokenABI).at('0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78');
+const token = vap.contract(tokenABI).at('0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78');
 
 token.totalSupply().then((totalSupply) => {
   // result <BN ...>  4500000
@@ -40,38 +40,38 @@ token.totalSupply().then((totalSupply) => {
 
 ## Welcome
 
-Thank you for trying out `ethjs`! A highly optimized light-weight JS utiltity for [Ethereum](https://www.ethereum.org/) based on [`web3.js`](https://github.com/ethereum/web3.js), but lighter and using `BN.js`.
+Thank you for trying out `vapjs`! A highly optimized light-weight JS utiltity for [Vapory](https://www.vapory.org/) based on [`web3.js`](https://github.com/vaporyco/web3.js), but lighter and using `BN.js`.
 
 ## Notice/Warning
 
-`ethjs` is still in development and is highly experimental. Use at your own risk. While we test everything as against standards, specifications and existing test cases (layed out by both the community and the Ethereum Foundation), this module is not ready for production use. More user testing is needed, so please, help out!
+`vapjs` is still in development and is highly experimental. Use at your own risk. While we test everything as against standards, specifications and existing test cases (layed out by both the community and the Vapory Foundation), this module is not ready for production use. More user testing is needed, so please, help out!
 
 ## Modules
 
-`ethjs` is made from a series of smaller modules:
+`vapjs` is made from a series of smaller modules:
 
-  - [`ethjs-query`](http://github.com/ethjs/ethjs-query) for querying the RPC layer
-  - [`ethjs-format`](http://github.com/ethjs/ethjs-format) for formatting RPC payloads to and from the nodes
-  - [`ethjs-contract`](http://github.com/ethjs/ethjs-contract) for handling contracts
-  - [`ethjs-abi`](http://github.com/ethjs/ethjs-abi) for handling contract data encoding and decoding
-  - [`ethjs-filter`](http://github.com/ethjs/ethjs-filter) for handling filters and events
-  - [`ethjs-unit`](http://github.com/ethjs/ethjs-unit) for handling Ethereum currency unit conversion
-  - [`ethjs-util`](http://github.com/ethjs/ethjs-util) general utiltity methods
-  - [`ethjs-provider-http`](http://github.com/ethjs/ethjs-provider-http) a simple XHR http provider
+  - [`vapjs-query`](http://github.com/vapjs/vapjs-query) for querying the RPC layer
+  - [`vapjs-format`](http://github.com/vapjs/vapjs-format) for formatting RPC payloads to and from the nodes
+  - [`vapjs-contract`](http://github.com/vapjs/vapjs-contract) for handling contracts
+  - [`vapjs-abi`](http://github.com/vapjs/vapjs-abi) for handling contract data encoding and decoding
+  - [`vapjs-filter`](http://github.com/vapjs/vapjs-filter) for handling filters and events
+  - [`vapjs-unit`](http://github.com/vapjs/vapjs-unit) for handling Vapory currency unit conversion
+  - [`vapjs-util`](http://github.com/vapjs/vapjs-util) general utiltity methods
+  - [`vapjs-provider-http`](http://github.com/vapjs/vapjs-provider-http) a simple XHR http provider
 
 ## Concepts
 
 ### dApps or Decentralized Apps
 
-`ethjs` is primarily designed for building light-weight dApps or "Decentralized Applications" on Ethereum. dApps are usually just some HTML/Javascript/CSS file(s) that interface with an Ethereum node or client. They usually have little to no server architecture and are often just faces or light interfaces for one or many Ethereum smart-contracts.
+`vapjs` is primarily designed for building light-weight dApps or "Decentralized Applications" on Vapory. dApps are usually just some HTML/Javascript/CSS file(s) that interface with an Vapory node or client. They usually have little to no server architecture and are often just faces or light interfaces for one or many Vapory smart-contracts.
 
 ### Nodes
 
-`ethjs` is meant to be a simple javascript interface for Ethereum nodes and clients. If you are not running a node, we recommend using [TestRPC](https://github.com/ethereumjs/testrpc) (`npm install --save-dev ethereumjs-testrpc`), [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en), [Mist](https://github.com/ethereum/mist/releases), or [Infura](https://www.infura.io/). A node or client is generally required to both access and use Ethereum accounts, smart-contracts and the Ethereum blockchain.
+`vapjs` is meant to be a simple javascript interface for Vapory nodes and clients. If you are not running a node, we recommend using [TestRPC](https://github.com/vaporycojs/testrpc) (`npm install --save-dev vaporyjs-testrpc`), [MetaMask](https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?hl=en), [Mist](https://github.com/vaporyco/mist/releases), or [Infura](https://www.infura.io/). A node or client is generally required to both access and use Vapory accounts, smart-contracts and the Vapory blockchain.
 
 ### Accounts
 
-Ethereum uses [secp256k1]() (public/private) key pairs for its account system. An Ethereum account address (e.g. `0xBd151ceB123dcba8C27Ad0769B8B9C11aFc69CC2`) is derived from the public key in the key pair. Both `accounts` and Ethereum `smart-contracts` have addresses, but only accounts use key pairs. Ether is sent to and from contracts or accounts via addresses.
+Vapory uses [secp256k1]() (public/private) key pairs for its account system. An Vapory account address (e.g. `0xBd151ceB123dcba8C27Ad0769B8B9C11aFc69CC2`) is derived from the public key in the key pair. Both `accounts` and Vapory `smart-contracts` have addresses, but only accounts use key pairs. Vaper is sent to and from contracts or accounts via addresses.
 
 For example, this `secp256k1` **private key**:
 ```
@@ -83,76 +83,76 @@ Derives to this `secp256k1` **public key**:
 0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3daa12198d9284fe7c0d9cbb2cf970d5997e642edb1373a9fbe48784c8
 ```
 
-Which derives to this Ethereum **address**:
+Which derives to this Vapory **address**:
 ```
 0xBd151ceB123dcba8C27Ad0769B8B9C11aFc69CC2
 ```
 
-See: [`ethjs-account`](https://github.com/ethjs/ethjs-account), [`eth-lightwallet`](https://github.com/ConsenSys/eth-lightwallet), or the [`Ethereum Whitepaper`](https://github.com/ethereum/wiki/wiki/White-Paper#ethereum) for more details.
+See: [`vapjs-account`](https://github.com/vapjs/vapjs-account), [`vap-lightwallet`](https://github.com/ConsenSys/vap-lightwallet), or the [`Vapory Whitepaper`](https://github.com/vaporyco/wiki/wiki/White-Paper#vapory) for more details.
 
-Note, there is a [**difference**](https://www.reddit.com/r/ethereum/comments/470s3q/vitalik_made_a_very_clever_backwards_compatible/) between Ethereum `checksum` addresses (i.e. `0xBd151ceB123dcba8C27Ad0769B8B9C11aFc69CC2`), and non-checksum addresses (i.e. `0xbd151ceb123dcba8c27ad0769b8b9c11afc69cc2`).
+Note, there is a [**difference**](https://www.reddit.com/r/vapory/comments/470s3q/vitalik_made_a_very_clever_backwards_compatible/) between Vapory `checksum` addresses (i.e. `0xBd151ceB123dcba8C27Ad0769B8B9C11aFc69CC2`), and non-checksum addresses (i.e. `0xbd151ceb123dcba8c27ad0769b8b9c11afc69cc2`).
 
-### Ether/Gas
+### Vaper/Gas
 
-Ether is the magical internet money that powers the Ethereum ecosystem. Each base unit of ether (a wei) is worth some amount of computational processes on the Ethereum world computer. Every transaction requires some amount of Ether to send, because of this, we sometimes refer to ether as "gas" or the "gas amount". You generally have to specify a gas amount when making any transaction with Ethereum.
+Vaper is the magical internet money that powers the Vapory ecosystem. Each base unit of vapor (a wei) is worth some amount of computational processes on the Vapory world computer. Every transaction requires some amount of Vaper to send, because of this, we sometimes refer to vapor as "gas" or the "gas amount". You generally have to specify a gas amount when making any transaction with Vapory.
 
-See: [`Ethereum Whitepaper`](https://github.com/ethereum/wiki/wiki/White-Paper#messages-and-transactions)
+See: [`Vapory Whitepaper`](https://github.com/vaporyco/wiki/wiki/White-Paper#messages-and-transactions)
 
 ### Smart-Contracts
 
-Ethereum contracts or `smart-contracts` are computational code stored on the Ethereum blockchain. Contracts can be written in a higher level language like [Solidity](https://solidity.readthedocs.io/en/develop/) which then compiles down into EVM (Ethereum Virtual Machine) bytecode that can be stored on the chain. To use or deploy these contracts with `ethjs` you need the **ABI** and (if your deploying) the **bytecode** or (if your just using it) the **address**. Contracts can be designed to send and receive, process and store data and `ether` from other `accounts` or `contracts`. `ethjs` provides a `eth.contract` object to help you interact with and deploy Ethereum contracts (its design is very similar to its `web3.js` counterpart).
+Vapory contracts or `smart-contracts` are computational code stored on the Vapory blockchain. Contracts can be written in a higher level language like [Solidity](https://solidity.readthedocs.io/en/develop/) which then compiles down into EVM (Vapory Virtual Machine) bytecode that can be stored on the chain. To use or deploy these contracts with `vapjs` you need the **ABI** and (if your deploying) the **bytecode** or (if your just using it) the **address**. Contracts can be designed to send and receive, process and store data and `vapor` from other `accounts` or `contracts`. `vapjs` provides a `vap.contract` object to help you interact with and deploy Vapory contracts (its design is very similar to its `web3.js` counterpart).
 
-See: [`Browser-Solidity`](https://ethereum.github.io/browser-solidity/) an in browser Solidity IDE for building contracts, [`Solidity Read The Docs`](https://solidity.readthedocs.io/en/develop/), [`ethjs-contract`](https://github.com/ethjs/ethjs-contract), [`Ethereum Whitepaper`](https://github.com/ethereum/wiki/wiki/White-Paper#applications). Note, this will actually provide you with the necessary contract `bytecode` and `ABI` required to deploy and use the contracts.
+See: [`Browser-Solidity`](https://vapory.github.io/browser-solidity/) an in browser Solidity IDE for building contracts, [`Solidity Read The Docs`](https://solidity.readthedocs.io/en/develop/), [`vapjs-contract`](https://github.com/vapjs/vapjs-contract), [`Vapory Whitepaper`](https://github.com/vaporyco/wiki/wiki/White-Paper#applications). Note, this will actually provide you with the necessary contract `bytecode` and `ABI` required to deploy and use the contracts.
 
 ### Transactions/vs Calls
 
-`ethjs` can both transact (attempt to change) and call (attempt to get information from) the blockchain. In order to send transactions, the raw transaction data must be signed by the secp256k1 private key of the account used, and some Ether must be put up as "gas" in order for it to be processed and added to the blockchain. Calls do not require any account or ether, and is simply just getting known information from the blockchain. Certain contract methods will require you to transact with them, while others are simply getters that you can call (usually refered to as "constant" methods).
+`vapjs` can both transact (attempt to change) and call (attempt to get information from) the blockchain. In order to send transactions, the raw transaction data must be signed by the secp256k1 private key of the account used, and some Vaper must be put up as "gas" in order for it to be processed and added to the blockchain. Calls do not require any account or vapor, and is simply just getting known information from the blockchain. Certain contract methods will require you to transact with them, while others are simply getters that you can call (usually refered to as "constant" methods).
 
-See: [`Ethereum Whitepaper`](https://github.com/ethereum/wiki/wiki/White-Paper#messages-and-transactions), [`Ethereum RPC Specification`](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_sendtransaction).
+See: [`Vapory Whitepaper`](https://github.com/vaporyco/wiki/wiki/White-Paper#messages-and-transactions), [`Vapory RPC Specification`](https://github.com/vaporyco/wiki/wiki/JSON-RPC#vap_sendtransaction).
 
 ### Testnet/Mainnet/Local
 
-The Ethereum (ETH) community runs two primary blockchains: a test network (testnet) called `ropsten` used to test contracts and transactions in a live (but not costly) setting and a main network (mainnet) called the Ethereum "Mainnet" or "Livenet" used to make actual transactions and contracts. Usually, most developers like to design their contracts and apps locally, and will run a local private network. Local networks can also be run with tools like ["TestRPC"](https://github.com/ethereumjs/testrpc), ["go-ethereum"](https://github.com/ethereum/go-ethereum) on a private network or ["parity"](https://github.com/ethcore/parity) on a private network.
+The Vapory (ETH) community runs two primary blockchains: a test network (testnet) called `ropsten` used to test contracts and transactions in a live (but not costly) setting and a main network (mainnet) called the Vapory "Mainnet" or "Livenet" used to make actual transactions and contracts. Usually, most developers like to design their contracts and apps locally, and will run a local private network. Local networks can also be run with tools like ["TestRPC"](https://github.com/vaporycojs/testrpc), ["go-vapory"](https://github.com/vaporyco/go-vapory) on a private network or ["parity"](https://github.com/ethcore/parity) on a private network.
 
-See: [`Etherscan Testnet Blockchain Explorer`](http://testnet.etherscan.io/)
+See: [`Vaperscan Testnet Blockchain Explorer`](http://testnet.vaporscan.io/)
 
 ### Chain Services
 
-There are many services available to help connect you or your app to the Ethereum testnet or mainnet. [infura](https://www.infura.io/) is one constantly referenced by `ethjs` examples. Currently, it allows anyone to access its scalable node cluster for free over an HTTPS connection. You can connect to the infura testnet by using the [`HTTP provider`](https://github.com/ethjs/ethjs-provider-http) with the host set to either: `https://ropsten.infura.io` or mainnet by using `https://mainnet.infura.io`. Note, if you use infura, you need to do your own account handling and signing of transactions.
+There are many services available to help connect you or your app to the Vapory testnet or mainnet. [infura](https://www.infura.io/) is one constantly referenced by `vapjs` examples. Currently, it allows anyone to access its scalable node cluster for free over an HTTPS connection. You can connect to the infura testnet by using the [`HTTP provider`](https://github.com/vapjs/vapjs-provider-http) with the host set to either: `https://ropsten.infura.io` or mainnet by using `https://mainnet.infura.io`. Note, if you use infura, you need to do your own account handling and signing of transactions.
 
 See: [`Infura.io`](https://www.infura.io/)
 
 ### Account Handling/Signing
 
-Account handling and signing must be done carfully and with extreme caution. Note, if someone gains access to your private key, they can and most likely will steal all of your Ether. Handling private keys is very dangerous and should be treated with extreme caution. Many nodes, clients and services (such as: [MetaMask], [uPort], [Geth], [Partiy], [Lightwallet] and others) help manage your keys and transaction signing for you.
+Account handling and signing must be done carfully and with extreme caution. Note, if someone gains access to your private key, they can and most likely will steal all of your Vaper. Handling private keys is very dangerous and should be treated with extreme caution. Many nodes, clients and services (such as: [MetaMask], [uPort], [Gvap], [Partiy], [Lightwallet] and others) help manage your keys and transaction signing for you.
 
-See: [`Ethereum Whitepaper`](https://github.com/ethereum/wiki/wiki/White-Paper#ethereum-accounts).
+See: [`Vapory Whitepaper`](https://github.com/vaporyco/wiki/wiki/White-Paper#vapory-accounts).
 
 ### RPC
 
-`ethjs` communicates with the Ethereum nodes and clients via RPC (Remote Procedure Call) data payloads send to and from your dApp and the node. `ethjs` has complete Ethereum RPC specification coverage, and tries to abstract very little past the specification. `ethjs` helps you format and build the data payloads that will be send and format payloads that are recieved by Ethereum nodes. Usually, a provider is specified and then payloads can be transmitted between your dApp and the Ethereum nodes.
+`vapjs` communicates with the Vapory nodes and clients via RPC (Remote Procedure Call) data payloads send to and from your dApp and the node. `vapjs` has complete Vapory RPC specification coverage, and tries to abstract very little past the specification. `vapjs` helps you format and build the data payloads that will be send and format payloads that are recieved by Vapory nodes. Usually, a provider is specified and then payloads can be transmitted between your dApp and the Vapory nodes.
 
-See: [`Ethereum RPC Specification`](https://github.com/ethereum/wiki/wiki/JSON-RPC) for more details.
+See: [`Vapory RPC Specification`](https://github.com/vaporyco/wiki/wiki/JSON-RPC) for more details.
 
 ### Events/Filters
 
-`ethjs` provides facility to manage events and filters. Filters are simple mechanisms to listen for changes on the blockchain. Contracts can also dispatch custom events.
+`vapjs` provides facility to manage events and filters. Filters are simple mechanisms to listen for changes on the blockchain. Contracts can also dispatch custom events.
 
-See: [`ethjs-filter`](https://github.com/ethjs/ethjs-filter), [`Ethereum RPC Specification`](https://github.com/ethereum/wiki/wiki/JSON-RPC#eth_newfilter)
+See: [`vapjs-filter`](https://github.com/vapjs/vapjs-filter), [`Vapory RPC Specification`](https://github.com/vaporyco/wiki/wiki/JSON-RPC#vap_newfilter)
 
 ## Asynchronous Only
 
-`ethjs` is completely async when handling data from any Ethereum provider, node or client. All data methods require the use of either a callback or standard promise.
+`vapjs` is completely async when handling data from any Vapory provider, node or client. All data methods require the use of either a callback or standard promise.
 
 ## Big Numbers/Number Handling
 
-Ethereum uses very large numbers for handling currency amounts and number storage on the blockchain. The JVM (Javascript Virtual Machine) can only handle up to integer `9007199254740991` safely without loosing precision. Because of this, we have to use a module called `bn.js` to handle the very large numbers and amounts often used in Ethereum. Note, [`bn.js`](https://github.com/indutny/bn.js) "BN" is not the same as [`bignumber.js`](https://github.com/MikeMcl/bignumber.js) "BigNumber" used by web3. They are two different libraries. We use [`bn.js`](https://github.com/indutny/bn.js) because it does not support any decimal numbers, and can manage absolute precision of large integers (this lib is also used by `ethereumjs`).
+Vapory uses very large numbers for handling currency amounts and number storage on the blockchain. The JVM (Javascript Virtual Machine) can only handle up to integer `9007199254740991` safely without loosing precision. Because of this, we have to use a module called `bn.js` to handle the very large numbers and amounts often used in Vapory. Note, [`bn.js`](https://github.com/indutny/bn.js) "BN" is not the same as [`bignumber.js`](https://github.com/MikeMcl/bignumber.js) "BigNumber" used by web3. They are two different libraries. We use [`bn.js`](https://github.com/indutny/bn.js) because it does not support any decimal numbers, and can manage absolute precision of large integers (this lib is also used by `vaporyjs`).
 
-There are **no decimal numbers on the blockchain**. All numbers must be converted to integers and then to hex format for chain storage and use. You must be very careful when handling large numbers. When working with Ethereum number values, try to avoid or never use actual Number type values (i.e. `value: 45038000000,`) or decimal numbers (`value: 1000.003`). This may lead to incorrect values conversion, number precision loss or worse, all your or your users ether!
+There are **no decimal numbers on the blockchain**. All numbers must be converted to integers and then to hex format for chain storage and use. You must be very careful when handling large numbers. When working with Vapory number values, try to avoid or never use actual Number type values (i.e. `value: 45038000000,`) or decimal numbers (`value: 1000.003`). This may lead to incorrect values conversion, number precision loss or worse, all your or your users vapor!
 
-Try to **always use `BN` Big Numbers** or if you have to strings. `ethjs` will attempt to convert your type `String` number into a BN properly, however, the best way is to always provide a type Object `BN` instance (e.g. `value: new Eth.BN('4000001'),` instead of `value: 4000001,`).
+Try to **always use `BN` Big Numbers** or if you have to strings. `vapjs` will attempt to convert your type `String` number into a BN properly, however, the best way is to always provide a type Object `BN` instance (e.g. `value: new Vap.BN('4000001'),` instead of `value: 4000001,`).
 
-If you have to handle decimal amounts of value like `ether` (e.g. `4500.302 ether`), simply convert the value down to `wei` using the toWei method (e.g. `Eth.toWei('4500.302', 'ether')`) and then do your handling with BN.
+If you have to handle decimal amounts of value like `vapor` (e.g. `4500.302 vapor`), simply convert the value down to `wei` using the toWei method (e.g. `Vap.toWei('4500.302', 'vapor')`) and then do your handling with BN.
 
 The BN object comes equip with numerous mathamatical operators and methods.
 
@@ -162,100 +162,100 @@ The BN object comes equip with numerous mathamatical operators and methods.
 
 ## API Design
 
-* [Eth.BN](#ethbn)
-* [Eth.isAddress](#ethisaddress)
-* [Eth.keccak256](#ethkeccak256)
-* [Eth.isHexString](#ethishexstring)
-* [Eth.fromWei](#ethfromwei)
-* [Eth.toWei](#ethtowei)
-* [Eth.toBN](#ethtobn)
-* [Eth.fromAscii](#ethfromascii)
-* [Eth.toAscii](#ethtoascii)
-* [Eth.fromUtf8](#ethfromutf8)
-* [Eth.toUtf8](#ethtoutf8)
-* [Eth.HttpProvider](#ethhttpprovider)
-* [eth.contract](#ethcontract)
-* [eth.filter](#ethfilter)
-* [eth.web3_clientVersion](#ethweb3_clientversion)
-* [eth.web3_sha3](#ethweb3_sha3)
-* [eth.net_version](#ethnet_version)
-* [eth.net_peerCount](#ethnet_peercount)
-* [eth.net_listening](#ethnet_listening)
-* [eth.protocolVersion](#ethprotocolversion)
-* [eth.syncing](#ethsyncing)
-* [eth.coinbase](#ethcoinbase)
-* [eth.mining](#ethmining)
-* [eth.hashrate](#ethhashrate)
-* [eth.gasPrice](#ethgasprice)
-* [eth.accounts](#ethaccounts)
-* [eth.blockNumber](#ethblocknumber)
-* [eth.getBalance](#ethgetbalance)
-* [eth.getStorageAt](#ethgetstorageat)
-* [eth.getTransactionCount](#ethgettransactioncount)
-* [eth.getBlockTransactionCountByHash](#ethgetblocktransactioncountbyhash)
-* [eth.getBlockTransactionCountByNumber](#ethgetblocktransactioncountbynumber)
-* [eth.getUncleCountByBlockHash](#ethgetunclecountbyblockhash)
-* [eth.getUncleCountByBlockNumber](#ethgetunclecountbyblocknumber)
-* [eth.getCode](#ethgetcode)
-* [eth.sign](#ethsign)
-* [eth.sendTransaction](#ethsendtransaction)
-* [eth.sendRawTransaction](#ethsendrawtransaction)
-* [eth.call](#ethcall)
-* [eth.estimateGas](#ethestimategas)
-* [eth.getBlockByHash](#ethgetblockbyhash)
-* [eth.getBlockByNumber](#ethgetblockbynumber)
-* [eth.getTransactionByHash](#ethgettransactionbyhash)
-* [eth.getTransactionByBlockHashAndIndex](#ethgettransactionbyblockhashandindex)
-* [eth.getTransactionByBlockNumberAndIndex](#ethgettransactionbyblocknumberandindex)
-* [eth.getTransactionReceipt](#ethgettransactionreceipt)
-* [eth.getUncleByBlockHashAndIndex](#ethgetunclebyblockhashandindex)
-* [eth.getUncleByBlockNumberAndIndex](#ethgetunclebyblocknumberandindex)
-* [eth.getCompilers](#ethgetcompilers)
-* [eth.compileLLL](#ethcompilelll)
-* [eth.compileSolidity](#ethcompilesolidity)
-* [eth.compileSerpent](#ethcompileserpent)
-* [eth.newFilter](#ethnewfilter)
-* [eth.newBlockFilter](#ethnewblockfilter)
-* [eth.newPendingTransactionFilter](#ethnewpendingtransactionfilter)
-* [eth.uninstallFilter](#ethuninstallfilter)
-* [eth.getFilterChanges](#ethgetfilterchanges)
-* [eth.getFilterLogs](#ethgetfilterlogs)
-* [eth.getLogs](#ethgetlogs)
-* [eth.getWork](#ethgetwork)
-* [eth.submitWork](#ethsubmitwork)
-* [eth.submitHashrate](#ethsubmithashrate)
-* [eth.db_putString](#ethdb_putstring)
-* [eth.db_getString](#ethdb_getstring)
-* [eth.db_putHex](#ethdb_puthex)
-* [eth.db_getHex](#ethdb_gethex)
-* [eth.shh_post](#ethshh_post)
-* [eth.shh_version](#ethshh_version)
-* [eth.shh_newIdentity](#ethshh_newidentity)
-* [eth.shh_hasIdentity](#ethshh_hasidentity)
-* [eth.shh_newGroup](#ethshh_newgroup)
-* [eth.shh_addToGroup](#ethshh_addtogroup)
-* [eth.shh_newFilter](#ethshh_newfilter)
-* [eth.shh_uninstallFilter](#ethshh_uninstallfilter)
-* [eth.shh_getFilterChanges](#ethshh_getfilterchanges)
-* [eth.shh_getMessages](#ethshh_getmessages)
+* [Vap.BN](#vapbn)
+* [Vap.isAddress](#vapisaddress)
+* [Vap.keccak256](#vapkeccak256)
+* [Vap.isHexString](#vapishexstring)
+* [Vap.fromWei](#vapfromwei)
+* [Vap.toWei](#vaptowei)
+* [Vap.toBN](#vaptobn)
+* [Vap.fromAscii](#vapfromascii)
+* [Vap.toAscii](#vaptoascii)
+* [Vap.fromUtf8](#vapfromutf8)
+* [Vap.toUtf8](#vaptoutf8)
+* [Vap.HttpProvider](#vaphttpprovider)
+* [vap.contract](#vapcontract)
+* [vap.filter](#vapfilter)
+* [vap.web3_clientVersion](#vapweb3_clientversion)
+* [vap.web3_sha3](#vapweb3_sha3)
+* [vap.net_version](#vapnet_version)
+* [vap.net_peerCount](#vapnet_peercount)
+* [vap.net_listening](#vapnet_listening)
+* [vap.protocolVersion](#vapprotocolversion)
+* [vap.syncing](#vapsyncing)
+* [vap.coinbase](#vapcoinbase)
+* [vap.mining](#vapmining)
+* [vap.hashrate](#vaphashrate)
+* [vap.gasPrice](#vapgasprice)
+* [vap.accounts](#vapaccounts)
+* [vap.blockNumber](#vapblocknumber)
+* [vap.getBalance](#vapgetbalance)
+* [vap.getStorageAt](#vapgetstorageat)
+* [vap.getTransactionCount](#vapgettransactioncount)
+* [vap.getBlockTransactionCountByHash](#vapgetblocktransactioncountbyhash)
+* [vap.getBlockTransactionCountByNumber](#vapgetblocktransactioncountbynumber)
+* [vap.getUncleCountByBlockHash](#vapgetunclecountbyblockhash)
+* [vap.getUncleCountByBlockNumber](#vapgetunclecountbyblocknumber)
+* [vap.getCode](#vapgetcode)
+* [vap.sign](#vapsign)
+* [vap.sendTransaction](#vapsendtransaction)
+* [vap.sendRawTransaction](#vapsendrawtransaction)
+* [vap.call](#vapcall)
+* [vap.estimateGas](#vapestimategas)
+* [vap.getBlockByHash](#vapgetblockbyhash)
+* [vap.getBlockByNumber](#vapgetblockbynumber)
+* [vap.getTransactionByHash](#vapgettransactionbyhash)
+* [vap.getTransactionByBlockHashAndIndex](#vapgettransactionbyblockhashandindex)
+* [vap.getTransactionByBlockNumberAndIndex](#vapgettransactionbyblocknumberandindex)
+* [vap.getTransactionReceipt](#vapgettransactionreceipt)
+* [vap.getUncleByBlockHashAndIndex](#vapgetunclebyblockhashandindex)
+* [vap.getUncleByBlockNumberAndIndex](#vapgetunclebyblocknumberandindex)
+* [vap.getCompilers](#vapgetcompilers)
+* [vap.compileLLL](#vapcompilelll)
+* [vap.compileSolidity](#vapcompilesolidity)
+* [vap.compileSerpent](#vapcompileserpent)
+* [vap.newFilter](#vapnewfilter)
+* [vap.newBlockFilter](#vapnewblockfilter)
+* [vap.newPendingTransactionFilter](#vapnewpendingtransactionfilter)
+* [vap.uninstallFilter](#vapuninstallfilter)
+* [vap.getFilterChanges](#vapgetfilterchanges)
+* [vap.getFilterLogs](#vapgetfilterlogs)
+* [vap.getLogs](#vapgetlogs)
+* [vap.getWork](#vapgetwork)
+* [vap.submitWork](#vapsubmitwork)
+* [vap.submitHashrate](#vapsubmithashrate)
+* [vap.db_putString](#vapdb_putstring)
+* [vap.db_getString](#vapdb_getstring)
+* [vap.db_putHex](#vapdb_puthex)
+* [vap.db_getHex](#vapdb_gvapex)
+* [vap.shh_post](#vapshh_post)
+* [vap.shh_version](#vapshh_version)
+* [vap.shh_newIdentity](#vapshh_newidentity)
+* [vap.shh_hasIdentity](#vapshh_hasidentity)
+* [vap.shh_newGroup](#vapshh_newgroup)
+* [vap.shh_addToGroup](#vapshh_addtogroup)
+* [vap.shh_newFilter](#vapshh_newfilter)
+* [vap.shh_uninstallFilter](#vapshh_uninstallfilter)
+* [vap.shh_getFilterChanges](#vapshh_getfilterchanges)
+* [vap.shh_getMessages](#vapshh_getmessages)
 
-### eth.contract
+### vap.contract
 
-[index.js:ethjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
 
-Intakes the contract Ethereum standard ABI schema, optionally the contract bytecode and default transaction object. Outputs a `ContractFactory` instance for the contract.
+Intakes the contract Vapory standard ABI schema, optionally the contract bytecode and default transaction object. Outputs a `ContractFactory` instance for the contract.
 
 **Parameters**
 
--   `abi` **Array** a single Ethereum standard contract ABI array
+-   `abi` **Array** a single Vapory standard contract ABI array
 -   `bytecode` **String** [optional] the contract bytecode as a single alphanumeric hex string
 -   `defaultTxObject` **Object** [optional] a single default transaction object
 
 Result `ContractFactory` **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
 // the abi
 const SimpleStoreABI = JSON
@@ -264,8 +264,8 @@ const SimpleStoreABI = JSON
 // bytecode
 const SimpleStoreBytecode = '606060405234610000575b5b5b61010e8061001a6000396000f360606040526000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b1146100435780636d4ce63c14610076575b610000565b346100005761005e6004808035906020019091905050610099565b60405180821515815260200191505060405180910390f35b3461000057610083610103565b6040518082815260200191505060405180910390f35b6000816000819055507f10e8e9bc5a1bde3dd6bb7245b52503fcb9d9b1d7c7b26743f82c51cc7cce917d60005433604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a1600190505b919050565b600060005490505b9056';
 
-eth.accounts().then((accounts) => {
-  const SimpleStore = eth.contract(SimpleStoreABI, SimpleStoreBytecode, {
+vap.accounts().then((accounts) => {
+  const SimpleStore = vap.contract(SimpleStoreABI, SimpleStoreBytecode, {
     from: accounts[0],
     gas: 300000,
   });
@@ -282,9 +282,9 @@ eth.accounts().then((accounts) => {
 
 ### ContractFactory.new
 
-[index.js:ethjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
 
-The contract factory has two methods, 'at' and 'new' which can be used to create the contract instance. The `at` method is used to create a `Contract` instance for a contract that has already been deployed to the Ethereum blockchain (testnet, livenet, local or otherwise). The `new` method is used to deploy the contract to the current chain.
+The contract factory has two methods, 'at' and 'new' which can be used to create the contract instance. The `at` method is used to create a `Contract` instance for a contract that has already been deployed to the Vapory blockchain (testnet, livenet, local or otherwise). The `new` method is used to deploy the contract to the current chain.
 
 **Parameters**
 
@@ -296,8 +296,8 @@ Result a single Promise **Object** instance.
 
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
 // the abi
 const SimpleStoreABI = JSON
@@ -306,8 +306,8 @@ const SimpleStoreABI = JSON
 // bytecode
 const SimpleStoreBytecode = '606060405234610000575b5b5b61010e8061001a6000396000f360606040526000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b1146100435780636d4ce63c14610076575b610000565b346100005761005e6004808035906020019091905050610099565b60405180821515815260200191505060405180910390f35b3461000057610083610103565b6040518082815260200191505060405180910390f35b6000816000819055507f10e8e9bc5a1bde3dd6bb7245b52503fcb9d9b1d7c7b26743f82c51cc7cce917d60005433604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a1600190505b919050565b600060005490505b9056';
 
-eth.accounts().then((accounts) => {
-  const SimpleStore = eth.contract(SimpleStoreABI, SimpleStoreBytecode, {
+vap.accounts().then((accounts) => {
+  const SimpleStore = vap.contract(SimpleStoreABI, SimpleStoreBytecode, {
     from: accounts[0],
     gas: 300000,
   });
@@ -321,7 +321,7 @@ eth.accounts().then((accounts) => {
 
 ### ContractFactory.at
 
-[index.js:ethjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
 
 The contract factory has two methods, 'at' and 'new' which can be used to create the `Contract` instance.
 
@@ -332,8 +332,8 @@ The contract factory has two methods, 'at' and 'new' which can be used to create
 Result a single `Contract` **Object** instance.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
 // the abi
 const SimpleStoreABI = JSON
@@ -342,8 +342,8 @@ const SimpleStoreABI = JSON
 // bytecode
 const SimpleStoreBytecode = '606060405234610000575b5b5b61010e8061001a6000396000f360606040526000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b1146100435780636d4ce63c14610076575b610000565b346100005761005e6004808035906020019091905050610099565b60405180821515815260200191505060405180910390f35b3461000057610083610103565b6040518082815260200191505060405180910390f35b6000816000819055507f10e8e9bc5a1bde3dd6bb7245b52503fcb9d9b1d7c7b26743f82c51cc7cce917d60005433604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a1600190505b919050565b600060005490505b9056';
 
-eth.accounts().then((accounts) => {
-  const SimpleStore = eth.contract(SimpleStoreABI, SimpleStoreBytecode, {
+vap.accounts().then((accounts) => {
+  const SimpleStore = vap.contract(SimpleStoreABI, SimpleStoreBytecode, {
     from: accounts[0],
     gas: 300000,
   });
@@ -360,9 +360,9 @@ eth.accounts().then((accounts) => {
 
 ### Contract (Instance)
 
-[index.js:ethjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-contract](../../../blob/master/src/index.js "Source code on GitHub")
 
-The contract instance is meant to simulate a deployed Ethereum contract interface as a javascript object. All specified call methods are attached to this object (as specified by the contract ABI schema array).
+The contract instance is meant to simulate a deployed Vapory contract interface as a javascript object. All specified call methods are attached to this object (as specified by the contract ABI schema array).
 
 In the example below, the SimpleStore contract has methods `set`, `get`, `constructor` and `SetComplete`.
 
@@ -377,8 +377,8 @@ In this contract, the `SetComplete` event is fired when the `set` method has set
 You will notice the `simpleStore` instance makes all these methods available to it.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
 // the abi
 const SimpleStoreABI = JSON
@@ -387,8 +387,8 @@ const SimpleStoreABI = JSON
 // bytecode
 const SimpleStoreBytecode = '606060405234610000575b5b5b61010e8061001a6000396000f360606040526000357c01000000000000000000000000000000000000000000000000000000009004806360fe47b1146100435780636d4ce63c14610076575b610000565b346100005761005e6004808035906020019091905050610099565b60405180821515815260200191505060405180910390f35b3461000057610083610103565b6040518082815260200191505060405180910390f35b6000816000819055507f10e8e9bc5a1bde3dd6bb7245b52503fcb9d9b1d7c7b26743f82c51cc7cce917d60005433604051808381526020018273ffffffffffffffffffffffffffffffffffffffff1681526020019250505060405180910390a1600190505b919050565b600060005490505b9056';
 
-eth.accounts().then((accounts) => {
-  const SimpleStore = eth.contract(SimpleStoreABI, SimpleStoreBytecode, {
+vap.accounts().then((accounts) => {
+  const SimpleStore = vap.contract(SimpleStoreABI, SimpleStoreBytecode, {
     from: accounts[0],
     gas: 300000,
   });
@@ -418,71 +418,71 @@ eth.accounts().then((accounts) => {
 });
 ```
 
-### Eth.toWei
+### Vap.toWei
 
-[index.js:ethjs-unit](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-unit](../../../blob/master/src/index.js "Source code on GitHub")
 
-Convert a single Ethereum denominated value at a specified unit, and convert it to its `wei` value. Intakes a `value` and `unit` specifier, outputs a single wei value `BN` object.
+Convert a single Vapory denominated value at a specified unit, and convert it to its `wei` value. Intakes a `value` and `unit` specifier, outputs a single wei value `BN` object.
 
 **Parameters**
 
 -   `value` **Object|Number|String** a single number `wei` value as a integer, BN.js object instance, string hex integer, BN.js object instance (no decimals)
--   `unit` **String** the unit to covert to (i.e. `finney`, `ether` etc..)
+-   `unit` **String** the unit to covert to (i.e. `finney`, `vapor` etc..)
 
 Result output single BN **Object**.
 
 ```js
-const Eth = require('ethjs');
+const Vap = require('vapjs');
 
-var val1 = Eth.toWei(249824778, 'ether');
+var val1 = Vap.toWei(249824778, 'vapor');
 
 // result <BN ...> [.toString(10) : 249824778000000000000000000]
 ```
 
-### Eth.fromWei
+### Vap.fromWei
 
-[index.js:ethjs-unit](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-unit](../../../blob/master/src/index.js "Source code on GitHub")
 
-Convert a wei denominated value into another Ethereum denomination. Intakes a single wei `value` and outputs a BN object.
+Convert a wei denominated value into another Vapory denomination. Intakes a single wei `value` and outputs a BN object.
 
 **Parameters**
 
--   `value` **Object|Number|String** a single number Ethereum denominated value
--   `unit` **String** the unit to covert to (i.e. `finney`, `ether` etc..)
+-   `value` **Object|Number|String** a single number Vapory denominated value
+-   `unit` **String** the unit to covert to (i.e. `finney`, `vapor` etc..)
 
 Result output single **String** number.
 
 ```js
-const Eth = require('ethjs');
+const Vap = require('vapjs');
 
-var val1 = Eth.fromWei(249824778000000000000000000, 'ether');
+var val1 = Vap.fromWei(249824778000000000000000000, 'vapor');
 
 // result '249824778'
 ```
 
-### Eth.HttpProvider
+### Vap.HttpProvider
 
-[index.js:ethjs-provider-http](../../../blob/master/src/index.js "Source code on GitHub")
+[index.js:vapjs-provider-http](../../../blob/master/src/index.js "Source code on GitHub")
 
 Intakes a `provider` URL specified as a string, and optionally the `timeout` specified as a Number, outputs a web3 standard `HttpProvider` object.
 
 **Parameters**
 
--   `provider` **String** the URL path to your local Http RPC enabled Ethereum node (e.g. `http://localhost:8545`) or a service node system like [Infura.io](http://infura.io) (e.g. `http://ropsten.infura.io`).
+-   `provider` **String** the URL path to your local Http RPC enabled Vapory node (e.g. `http://localhost:8545`) or a service node system like [Infura.io](http://infura.io) (e.g. `http://ropsten.infura.io`).
 -   `timeout` **Number** [optional] the time in seconds that an XHR2 request will wait until it times out.
 
 Result `HttpProvider` **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.accounts((err, result) => {
+vap.accounts((err, result) => {
   // result null ['0xd89b8a74c153f0626497bc4a531f702...', ...]
 });
 ```
 
-### Eth.keccak256
+### Vap.keccak256
 
 [index.js:keccak256](../../../blob/master/src/index.js "Source code on GitHub")
 
@@ -495,24 +495,24 @@ Intakes a single string and outputs a 32 byte (66 utf-8 byte) sha3 Keccak hex st
 Result output hex **String**.
 
 ```js
-const Eth = require('ethjs');
+const Vap = require('vapjs');
 
-console.log(Eth.keccak256('skfjksdfjksdjksd'));
+console.log(Vap.keccak256('skfjksdfjksdjksd'));
 
 // result 0x2b30820856594159b8ed9a26609193526e944a1a748eb7d493beac83911dd848
 ```
 
-### eth.filter
+### vap.filter
 
 [index.js:filter](../../../blob/master/src/index.js "Source code on GitHub")
 
-Used to manage Ethereum event listening and filtering.
+Used to manage Vapory event listening and filtering.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new HttpProvider('http://localhost:8545'));
 
-const filter = new eth.filters.Filter({ delay: 300 })
+const filter = new vap.filters.Filter({ delay: 300 })
 .new({ toBlock: 500 })
 .then((result) => {
   // result <BigNumber ...> filterId
@@ -526,7 +526,7 @@ filter.watch((result) => {
 filter.uninstall(cb);
 
 
-const filter = new eth.filters.BlockFilter()
+const filter = new vap.filters.BlockFilter()
 .at(7)
 filter.watch((result) => {
   // result [{...}, ...] (fires multiple times)
@@ -534,7 +534,7 @@ filter.watch((result) => {
 filter.uninstall(cb);
 
 
-const filter = new eth.filters.PendingTransactionFilter()
+const filter = new vap.filters.PendingTransactionFilter()
 .new()
 .then((result) => {
   // result <BigNumber ...> filterId
@@ -557,7 +557,7 @@ filter.uninstall()
 });
 ```
 
-### eth.web3_clientVersion
+### vap.web3_clientVersion
 
 [index.js:web3_clientVersion](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -570,10 +570,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.web3_clientVersion()
+vap.web3_clientVersion()
 .then((result) => {
   /*
   // result
@@ -587,7 +587,7 @@ eth.web3_clientVersion()
 ```
 
 
-### eth.web3_sha3
+### vap.web3_sha3
 
 [index.js:web3_sha3](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -601,10 +601,10 @@ The keccak 256 sha3 hash of the data.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.web3_sha3("0.1.6")
+vap.web3_sha3("0.1.6")
 .then((result) => {
   /*
   // result
@@ -618,7 +618,7 @@ eth.web3_sha3("0.1.6")
 ```
 
 
-### eth.net_version
+### vap.net_version
 
 [index.js:net_version](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -631,10 +631,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.net_version()
+vap.net_version()
 .then((result) => {
   /*
   // result
@@ -648,7 +648,7 @@ eth.net_version()
 ```
 
 
-### eth.net_peerCount
+### vap.net_peerCount
 
 [index.js:net_peerCount](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -661,10 +661,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.net_peerCount()
+vap.net_peerCount()
 .then((result) => {
   /*
   // result
@@ -678,7 +678,7 @@ eth.net_peerCount()
 ```
 
 
-### eth.net_listening
+### vap.net_listening
 
 [index.js:net_listening](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -691,10 +691,10 @@ none.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.net_listening()
+vap.net_listening()
 .then((result) => {
   /*
   // result
@@ -708,11 +708,11 @@ eth.net_listening()
 ```
 
 
-### eth.protocolVersion
+### vap.protocolVersion
 
-[index.js:eth_protocolVersion](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_protocolVersion](../../../blob/master/src/index.js Source code on GitHub")
 
-Returns the current ethereum protocol version.
+Returns the current vapory protocol version.
 
 **Parameters**
 
@@ -721,10 +721,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.protocolVersion()
+vap.protocolVersion()
 .then((result) => {
   /*
   // result
@@ -738,9 +738,9 @@ eth.protocolVersion()
 ```
 
 
-### eth.syncing
+### vap.syncing
 
-[index.js:eth_syncing](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_syncing](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns an object with data about the sync status or 'false'.
 
@@ -748,13 +748,13 @@ Returns an object with data about the sync status or 'false'.
 
 none.
 
-Result **"Boolean|EthSyncing"**.
+Result **"Boolean|VapSyncing"**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.syncing()
+vap.syncing()
 .then((result) => {
   /*
   // result
@@ -768,9 +768,9 @@ eth.syncing()
 ```
 
 
-### eth.coinbase
+### vap.coinbase
 
-[index.js:eth_coinbase](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_coinbase](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the client coinbase address.
 
@@ -781,10 +781,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.coinbase()
+vap.coinbase()
 .then((result) => {
   /*
   // result
@@ -798,9 +798,9 @@ eth.coinbase()
 ```
 
 
-### eth.mining
+### vap.mining
 
-[index.js:eth_mining](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_mining](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns 'true' if client is actively mining new blocks.
 
@@ -811,10 +811,10 @@ none.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.mining()
+vap.mining()
 .then((result) => {
   /*
   // result
@@ -828,9 +828,9 @@ eth.mining()
 ```
 
 
-### eth.hashrate
+### vap.hashrate
 
-[index.js:eth_hashrate](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_hashrate](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of hashes per second that the node is mining with.
 
@@ -841,10 +841,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.hashrate()
+vap.hashrate()
 .then((result) => {
   /*
   // result
@@ -858,9 +858,9 @@ eth.hashrate()
 ```
 
 
-### eth.gasPrice
+### vap.gasPrice
 
-[index.js:eth_gasPrice](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_gasPrice](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the current price per gas in wei.
 
@@ -871,10 +871,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.gasPrice()
+vap.gasPrice()
 .then((result) => {
   /*
   // result
@@ -888,9 +888,9 @@ eth.gasPrice()
 ```
 
 
-### eth.accounts
+### vap.accounts
 
-[index.js:eth_accounts](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_accounts](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns a list of addresses owned by client.
 
@@ -901,10 +901,10 @@ none.
 Result an **Array** of strings.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.accounts()
+vap.accounts()
 .then((result) => {
   /*
   // result
@@ -918,9 +918,9 @@ eth.accounts()
 ```
 
 
-### eth.blockNumber
+### vap.blockNumber
 
-[index.js:eth_blockNumber](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_blockNumber](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of most recent block.
 
@@ -931,10 +931,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.blockNumber()
+vap.blockNumber()
 .then((result) => {
   /*
   // result
@@ -948,9 +948,9 @@ eth.blockNumber()
 ```
 
 
-### eth.getBalance
+### vap.getBalance
 
-[index.js:eth_getBalance](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getBalance](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the balance of the account of given address.
 
@@ -963,10 +963,10 @@ Returns the balance of the account of given address.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getBalance("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
+vap.getBalance("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 .then((result) => {
   /*
   // result
@@ -980,9 +980,9 @@ eth.getBalance("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 ```
 
 
-### eth.getStorageAt
+### vap.getStorageAt
 
-[index.js:eth_getStorageAt](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getStorageAt](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the value from a storage position at a given address.
 
@@ -996,10 +996,10 @@ Returns the value from a storage position at a given address.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getStorageAt("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>, <BN ...>)
+vap.getStorageAt("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>, <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1013,9 +1013,9 @@ eth.getStorageAt("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>, <BN ...
 ```
 
 
-### eth.getTransactionCount
+### vap.getTransactionCount
 
-[index.js:eth_getTransactionCount](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getTransactionCount](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of transactions *sent* from an address.
 
@@ -1028,10 +1028,10 @@ Returns the number of transactions *sent* from an address.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getTransactionCount("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
+vap.getTransactionCount("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1045,9 +1045,9 @@ eth.getTransactionCount("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 ```
 
 
-### eth.getBlockTransactionCountByHash
+### vap.getBlockTransactionCountByHash
 
-[index.js:eth_getBlockTransactionCountByHash](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getBlockTransactionCountByHash](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of transactions in a block from a block matching the given block hash.
 
@@ -1059,10 +1059,10 @@ Returns the number of transactions in a block from a block matching the given bl
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getBlockTransactionCountByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.getBlockTransactionCountByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -1076,9 +1076,9 @@ eth.getBlockTransactionCountByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa95
 ```
 
 
-### eth.getBlockTransactionCountByNumber
+### vap.getBlockTransactionCountByNumber
 
-[index.js:eth_getBlockTransactionCountByNumber](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getBlockTransactionCountByNumber](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of transactions in a block from a block matching the given block number.
 
@@ -1090,10 +1090,10 @@ Returns the number of transactions in a block from a block matching the given bl
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getBlockTransactionCountByNumber(<BN ...>)
+vap.getBlockTransactionCountByNumber(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -1107,9 +1107,9 @@ eth.getBlockTransactionCountByNumber(<BN ...>)
 ```
 
 
-### eth.getUncleCountByBlockHash
+### vap.getUncleCountByBlockHash
 
-[index.js:eth_getUncleCountByBlockHash](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getUncleCountByBlockHash](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of uncles in a block from a block matching the given block hash.
 
@@ -1121,10 +1121,10 @@ Returns the number of uncles in a block from a block matching the given block ha
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getUncleCountByBlockHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.getUncleCountByBlockHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -1138,9 +1138,9 @@ eth.getUncleCountByBlockHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a681
 ```
 
 
-### eth.getUncleCountByBlockNumber
+### vap.getUncleCountByBlockNumber
 
-[index.js:eth_getUncleCountByBlockNumber](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getUncleCountByBlockNumber](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the number of uncles in a block from a block matching the given block number.
 
@@ -1152,10 +1152,10 @@ Returns the number of uncles in a block from a block matching the given block nu
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getUncleCountByBlockNumber(<BN ...>)
+vap.getUncleCountByBlockNumber(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -1169,9 +1169,9 @@ eth.getUncleCountByBlockNumber(<BN ...>)
 ```
 
 
-### eth.getCode
+### vap.getCode
 
-[index.js:eth_getCode](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getCode](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns code at a given address.
 
@@ -1184,10 +1184,10 @@ Returns code at a given address.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getCode("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
+vap.getCode("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1201,9 +1201,9 @@ eth.getCode("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", <BN ...>)
 ```
 
 
-### eth.sign
+### vap.sign
 
-[index.js:eth_sign](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_sign](../../../blob/master/src/index.js Source code on GitHub")
 
 Signs data with a given address.
 
@@ -1216,10 +1216,10 @@ Signs data with a given address.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.sign("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.sign("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -1233,9 +1233,9 @@ eth.sign("0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78", "0xbf2b4596cbd1511f4a6ef8
 ```
 
 
-### eth.sendTransaction
+### vap.sendTransaction
 
-[index.js:eth_sendTransaction](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_sendTransaction](../../../blob/master/src/index.js Source code on GitHub")
 
 Creates new message call transaction or a contract creation, if the data field contains code.
 
@@ -1247,10 +1247,10 @@ Creates new message call transaction or a contract creation, if the data field c
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.sendTransaction({
+vap.sendTransaction({
   from: '0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78',
   to: '0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78',
   value: '45000000',
@@ -1270,9 +1270,9 @@ eth.sendTransaction({
 ```
 
 
-### eth.sendRawTransaction
+### vap.sendRawTransaction
 
-[index.js:eth_sendRawTransaction](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_sendRawTransaction](../../../blob/master/src/index.js Source code on GitHub")
 
 Creates new message call transaction or a contract creation for signed transactions.
 
@@ -1284,10 +1284,10 @@ Creates new message call transaction or a contract creation for signed transacti
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.sendRawTransaction("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
+vap.sendRawTransaction("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
 .then((result) => {
   /*
   // result
@@ -1301,9 +1301,9 @@ eth.sendRawTransaction("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93
 ```
 
 
-### eth.call
+### vap.call
 
-[index.js:eth_call](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_call](../../../blob/master/src/index.js Source code on GitHub")
 
 Executes a new message call immediately without creating a transaction on the block chain.
 
@@ -1316,10 +1316,10 @@ Executes a new message call immediately without creating a transaction on the bl
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.call({
+vap.call({
   from: '0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78',
   to: '0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78',
   value: '45000000',
@@ -1339,9 +1339,9 @@ eth.call({
 ```
 
 
-### eth.estimateGas
+### vap.estimateGas
 
-[index.js:eth_estimateGas](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_estimateGas](../../../blob/master/src/index.js Source code on GitHub")
 
 Makes a call or transaction, which won't be added to the blockchain and returns the used gas, which can be used for estimating the used gas.
 
@@ -1354,10 +1354,10 @@ Makes a call or transaction, which won't be added to the blockchain and returns 
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.estimateGas({
+vap.estimateGas({
   from: '0x6e0E0e02377Bc1d90E8a7c21f12BA385C2C35f78',
   value: '0',
   gas: '30000',
@@ -1376,9 +1376,9 @@ eth.estimateGas({
 ```
 
 
-### eth.getBlockByHash
+### vap.getBlockByHash
 
-[index.js:eth_getBlockByHash](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getBlockByHash](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a block by hash.
 
@@ -1391,10 +1391,10 @@ Returns information about a block by hash.
 Result Block **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getBlockByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", true)
+vap.getBlockByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", true)
 .then((result) => {
   /*
   // result
@@ -1428,9 +1428,9 @@ eth.getBlockByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bc
 ```
 
 
-### eth.getBlockByNumber
+### vap.getBlockByNumber
 
-[index.js:eth_getBlockByNumber](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getBlockByNumber](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a block by block number.
 
@@ -1443,10 +1443,10 @@ Returns information about a block by block number.
 Result Block **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getBlockByNumber(<BN ...>, true)
+vap.getBlockByNumber(<BN ...>, true)
 .then((result) => {
   /*
   // result
@@ -1480,9 +1480,9 @@ eth.getBlockByNumber(<BN ...>, true)
 ```
 
 
-### eth.getTransactionByHash
+### vap.getTransactionByHash
 
-[index.js:eth_getTransactionByHash](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getTransactionByHash](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the information about a transaction requested by transaction hash.
 
@@ -1494,10 +1494,10 @@ Returns the information about a transaction requested by transaction hash.
 Result Transaction **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getTransactionByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.getTransactionByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -1523,9 +1523,9 @@ eth.getTransactionByHash("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f
 ```
 
 
-### eth.getTransactionByBlockHashAndIndex
+### vap.getTransactionByBlockHashAndIndex
 
-[index.js:eth_getTransactionByBlockHashAndIndex](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getTransactionByBlockHashAndIndex](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a transaction by block hash and transaction index position.
 
@@ -1538,10 +1538,10 @@ Returns information about a transaction by block hash and transaction index posi
 Result Transaction **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getTransactionByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", <BN ...>)
+vap.getTransactionByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1567,9 +1567,9 @@ eth.getTransactionByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8a
 ```
 
 
-### eth.getTransactionByBlockNumberAndIndex
+### vap.getTransactionByBlockNumberAndIndex
 
-[index.js:eth_getTransactionByBlockNumberAndIndex](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getTransactionByBlockNumberAndIndex](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a transaction by block number and transaction index position.
 
@@ -1582,10 +1582,10 @@ Returns information about a transaction by block number and transaction index po
 Result Transaction **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getTransactionByBlockNumberAndIndex(<BN ...>, <BN ...>)
+vap.getTransactionByBlockNumberAndIndex(<BN ...>, <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1611,9 +1611,9 @@ eth.getTransactionByBlockNumberAndIndex(<BN ...>, <BN ...>)
 ```
 
 
-### eth.getTransactionReceipt
+### vap.getTransactionReceipt
 
-[index.js:eth_getTransactionReceipt](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getTransactionReceipt](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the receipt of a transaction by transaction hash.
 
@@ -1625,10 +1625,10 @@ Returns the receipt of a transaction by transaction hash.
 Result receipt **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getTransactionReceipt("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.getTransactionReceipt("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -1660,9 +1660,9 @@ eth.getTransactionReceipt("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6
 ```
 
 
-### eth.getUncleByBlockHashAndIndex
+### vap.getUncleByBlockHashAndIndex
 
-[index.js:eth_getUncleByBlockHashAndIndex](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getUncleByBlockHashAndIndex](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a uncle of a block by hash and uncle index position.
 
@@ -1675,10 +1675,10 @@ Returns information about a uncle of a block by hash and uncle index position.
 Result Block **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getUncleByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", <BN ...>)
+vap.getUncleByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1712,9 +1712,9 @@ eth.getUncleByBlockHashAndIndex("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a
 ```
 
 
-### eth.getUncleByBlockNumberAndIndex
+### vap.getUncleByBlockNumberAndIndex
 
-[index.js:eth_getUncleByBlockNumberAndIndex](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getUncleByBlockNumberAndIndex](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns information about a uncle of a block by number and uncle index position.
 
@@ -1727,10 +1727,10 @@ Returns information about a uncle of a block by number and uncle index position.
 Result Block **Object**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getUncleByBlockNumberAndIndex(<BN ...>, <BN ...>)
+vap.getUncleByBlockNumberAndIndex(<BN ...>, <BN ...>)
 .then((result) => {
   /*
   // result
@@ -1764,9 +1764,9 @@ eth.getUncleByBlockNumberAndIndex(<BN ...>, <BN ...>)
 ```
 
 
-### eth.getCompilers
+### vap.getCompilers
 
-[index.js:eth_getCompilers](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getCompilers](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns a list of available compilers in the client.
 
@@ -1777,10 +1777,10 @@ none.
 Result an **Array** of strings.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getCompilers()
+vap.getCompilers()
 .then((result) => {
   /*
   // result
@@ -1794,9 +1794,9 @@ eth.getCompilers()
 ```
 
 
-### eth.compileLLL
+### vap.compileLLL
 
-[index.js:eth_compileLLL](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_compileLLL](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns compiled LLL code.
 
@@ -1808,10 +1808,10 @@ Returns compiled LLL code.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.compileLLL("0.1.6")
+vap.compileLLL("0.1.6")
 .then((result) => {
   /*
   // result
@@ -1825,9 +1825,9 @@ eth.compileLLL("0.1.6")
 ```
 
 
-### eth.compileSolidity
+### vap.compileSolidity
 
-[index.js:eth_compileSolidity](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_compileSolidity](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns compiled solidity code.
 
@@ -1839,10 +1839,10 @@ Returns compiled solidity code.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.compileSolidity("0.1.6")
+vap.compileSolidity("0.1.6")
 .then((result) => {
   /*
   // result
@@ -1856,9 +1856,9 @@ eth.compileSolidity("0.1.6")
 ```
 
 
-### eth.compileSerpent
+### vap.compileSerpent
 
-[index.js:eth_compileSerpent](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_compileSerpent](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns compiled serpent code.
 
@@ -1870,10 +1870,10 @@ Returns compiled serpent code.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.compileSerpent("0.1.6")
+vap.compileSerpent("0.1.6")
 .then((result) => {
   /*
   // result
@@ -1887,9 +1887,9 @@ eth.compileSerpent("0.1.6")
 ```
 
 
-### eth.newFilter
+### vap.newFilter
 
-[index.js:eth_newFilter](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_newFilter](../../../blob/master/src/index.js Source code on GitHub")
 
 Creates a filter object, based on filter options, to notify when the state changes (logs).
 
@@ -1901,12 +1901,12 @@ Creates a filter object, based on filter options, to notify when the state chang
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.newFilter({
+vap.newFilter({
   fromBlock: '1',
-  toBlock: new Eth.BN('45'),
+  toBlock: new Vap.BN('45'),
   address: '0x8888f1f195afa192cfee860698584c030f4c9db1',
   topics: ['0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b', null],
 })
@@ -1923,9 +1923,9 @@ eth.newFilter({
 ```
 
 
-### eth.newBlockFilter
+### vap.newBlockFilter
 
-[index.js:eth_newBlockFilter](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_newBlockFilter](../../../blob/master/src/index.js Source code on GitHub")
 
 Creates a filter in the node, to notify when a new block arrives.
 
@@ -1936,10 +1936,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.newBlockFilter()
+vap.newBlockFilter()
 .then((result) => {
   /*
   // result
@@ -1953,9 +1953,9 @@ eth.newBlockFilter()
 ```
 
 
-### eth.newPendingTransactionFilter
+### vap.newPendingTransactionFilter
 
-[index.js:eth_newPendingTransactionFilter](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_newPendingTransactionFilter](../../../blob/master/src/index.js Source code on GitHub")
 
 Creates a filter in the node, to notify when new pending transactions arrive.
 
@@ -1966,10 +1966,10 @@ none.
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.newPendingTransactionFilter()
+vap.newPendingTransactionFilter()
 .then((result) => {
   /*
   // result
@@ -1983,9 +1983,9 @@ eth.newPendingTransactionFilter()
 ```
 
 
-### eth.uninstallFilter
+### vap.uninstallFilter
 
-[index.js:eth_uninstallFilter](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_uninstallFilter](../../../blob/master/src/index.js Source code on GitHub")
 
 Uninstalls a filter with given id. Should always be called when watch is no longer needed.
 
@@ -1997,10 +1997,10 @@ Uninstalls a filter with given id. Should always be called when watch is no long
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.uninstallFilter(<BN ...>)
+vap.uninstallFilter(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2014,9 +2014,9 @@ eth.uninstallFilter(<BN ...>)
 ```
 
 
-### eth.getFilterChanges
+### vap.getFilterChanges
 
-[index.js:eth_getFilterChanges](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getFilterChanges](../../../blob/master/src/index.js Source code on GitHub")
 
 Polling method for a filter, which returns an array of logs which occurred since last poll.
 
@@ -2028,10 +2028,10 @@ Polling method for a filter, which returns an array of logs which occurred since
 Result an **Array** of filter change objects..
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getFilterChanges(<BN ...>)
+vap.getFilterChanges(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2055,9 +2055,9 @@ eth.getFilterChanges(<BN ...>)
 ```
 
 
-### eth.getFilterLogs
+### vap.getFilterLogs
 
-[index.js:eth_getFilterLogs](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getFilterLogs](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns an array of all logs matching filter with given id.
 
@@ -2069,10 +2069,10 @@ Returns an array of all logs matching filter with given id.
 Result an **Array** of filter change objects..
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getFilterLogs(<BN ...>)
+vap.getFilterLogs(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2096,9 +2096,9 @@ eth.getFilterLogs(<BN ...>)
 ```
 
 
-### eth.getLogs
+### vap.getLogs
 
-[index.js:eth_getLogs](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getLogs](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns an array of all logs matching a given filter object.
 
@@ -2110,12 +2110,12 @@ Returns an array of all logs matching a given filter object.
 Result **Array**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getLogs({
+vap.getLogs({
   fromBlock: '1',
-  toBlock: new Eth.BN('45'),
+  toBlock: new Vap.BN('45'),
   address: '0x8888f1f195afa192cfee860698584c030f4c9db1',
   topics: ['0x000000000000000000000000a94f5374fce5edbc8e2a8697c15331677e6ebf0b', null],
 })
@@ -2142,9 +2142,9 @@ eth.getLogs({
 ```
 
 
-### eth.getWork
+### vap.getWork
 
-[index.js:eth_getWork](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_getWork](../../../blob/master/src/index.js Source code on GitHub")
 
 Returns the hash of the current block, the seedHash, and the boundary condition to be met ("target").
 
@@ -2155,10 +2155,10 @@ none.
 Result an **Array** of strings.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.getWork()
+vap.getWork()
 .then((result) => {
   /*
   // result
@@ -2172,9 +2172,9 @@ eth.getWork()
 ```
 
 
-### eth.submitWork
+### vap.submitWork
 
-[index.js:eth_submitWork](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_submitWork](../../../blob/master/src/index.js Source code on GitHub")
 
 Used for submitting a proof-of-work solution.
 
@@ -2188,10 +2188,10 @@ Used for submitting a proof-of-work solution.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.submitWork("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
+vap.submitWork("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab45")
 .then((result) => {
   /*
   // result
@@ -2205,9 +2205,9 @@ eth.submitWork("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbab
 ```
 
 
-### eth.submitHashrate
+### vap.submitHashrate
 
-[index.js:eth_submitHashrate](../../../blob/master/src/index.js Source code on GitHub")
+[index.js:vap_submitHashrate](../../../blob/master/src/index.js Source code on GitHub")
 
 Used for submitting mining hashrate.
 
@@ -2220,10 +2220,10 @@ Used for submitting mining hashrate.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.submitHashrate("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
+vap.submitHashrate("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
 .then((result) => {
   /*
   // result
@@ -2237,7 +2237,7 @@ eth.submitHashrate("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bc
 ```
 
 
-### eth.db_putString
+### vap.db_putString
 
 [index.js:db_putString](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2253,10 +2253,10 @@ Stores a string in the local database.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.db_putString("0.1.6", "0.1.6", "0.1.6")
+vap.db_putString("0.1.6", "0.1.6", "0.1.6")
 .then((result) => {
   /*
   // result
@@ -2270,7 +2270,7 @@ eth.db_putString("0.1.6", "0.1.6", "0.1.6")
 ```
 
 
-### eth.db_getString
+### vap.db_getString
 
 [index.js:db_getString](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2285,10 +2285,10 @@ Returns string from the local database.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.db_getString("0.1.6", "0.1.6")
+vap.db_getString("0.1.6", "0.1.6")
 .then((result) => {
   /*
   // result
@@ -2302,7 +2302,7 @@ eth.db_getString("0.1.6", "0.1.6")
 ```
 
 
-### eth.db_putHex
+### vap.db_putHex
 
 [index.js:db_putHex](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2318,10 +2318,10 @@ Stores binary data in the local database.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.db_putHex("0.1.6", "0.1.6", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
+vap.db_putHex("0.1.6", "0.1.6", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
 .then((result) => {
   /*
   // result
@@ -2335,7 +2335,7 @@ eth.db_putHex("0.1.6", "0.1.6", "0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a
 ```
 
 
-### eth.db_getHex
+### vap.db_getHex
 
 [index.js:db_getHex](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2350,10 +2350,10 @@ Returns binary data from the local database.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.db_getHex("0.1.6", "0.1.6")
+vap.db_getHex("0.1.6", "0.1.6")
 .then((result) => {
   /*
   // result
@@ -2367,7 +2367,7 @@ eth.db_getHex("0.1.6", "0.1.6")
 ```
 
 
-### eth.shh_post
+### vap.shh_post
 
 [index.js:shh_post](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2381,10 +2381,10 @@ Sends a whisper message.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_post({
+vap.shh_post({
   from: '0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1',
   to: '0x3e245533f97284d442460f2998cd41858798ddf04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a0d4d661997d3940272b717b1',
   topics: ['0x776869737065722d636861742d636c69656e74', '0x4d5a695276454c39425154466b61693532'],
@@ -2405,7 +2405,7 @@ eth.shh_post({
 ```
 
 
-### eth.shh_version
+### vap.shh_version
 
 [index.js:shh_version](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2418,10 +2418,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_version()
+vap.shh_version()
 .then((result) => {
   /*
   // result
@@ -2435,7 +2435,7 @@ eth.shh_version()
 ```
 
 
-### eth.shh_newIdentity
+### vap.shh_newIdentity
 
 [index.js:shh_newIdentity](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2448,10 +2448,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_newIdentity()
+vap.shh_newIdentity()
 .then((result) => {
   /*
   // result
@@ -2465,7 +2465,7 @@ eth.shh_newIdentity()
 ```
 
 
-### eth.shh_hasIdentity
+### vap.shh_hasIdentity
 
 [index.js:shh_hasIdentity](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2479,10 +2479,10 @@ Checks if the client hold the private keys for a given identity.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_hasIdentity("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
+vap.shh_hasIdentity("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
 .then((result) => {
   /*
   // result
@@ -2496,7 +2496,7 @@ eth.shh_hasIdentity("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8b
 ```
 
 
-### eth.shh_newGroup
+### vap.shh_newGroup
 
 [index.js:shh_newGroup](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2509,10 +2509,10 @@ none.
 Result **String**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_newGroup()
+vap.shh_newGroup()
 .then((result) => {
   /*
   // result
@@ -2526,7 +2526,7 @@ eth.shh_newGroup()
 ```
 
 
-### eth.shh_addToGroup
+### vap.shh_addToGroup
 
 [index.js:shh_addToGroup](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2540,10 +2540,10 @@ Adds an identity to an SHH group.
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_addToGroup("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
+vap.shh_addToGroup("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bccbabd40cb8da3")
 .then((result) => {
   /*
   // result
@@ -2557,7 +2557,7 @@ eth.shh_addToGroup("0xbf2b4596cbd1511f4a6ef8af06d03354f53cb8aa9508a6810b6f93d8bc
 ```
 
 
-### eth.shh_newFilter
+### vap.shh_newFilter
 
 [index.js:shh_newFilter](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2571,10 +2571,10 @@ Creates filter to notify, when client receives whisper message matching the filt
 Result **BN**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_newFilter({
+vap.shh_newFilter({
    topics: ['0x12341234bf4b564f'],
    to: '0x04f96a5e25610293e42a73908e93ccc8c4d4dc0edcfa9fa872f50cb214e08ebf61a03e245533f97284d442460f2998cd41858798ddfd4d661997d3940272b717b1'
 })
@@ -2591,7 +2591,7 @@ eth.shh_newFilter({
 ```
 
 
-### eth.shh_uninstallFilter
+### vap.shh_uninstallFilter
 
 [index.js:shh_uninstallFilter](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2605,10 +2605,10 @@ Uninstalls a filter with given id. Should always be called when watch is no long
 Result **Boolean**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_uninstallFilter(<BN ...>)
+vap.shh_uninstallFilter(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2622,7 +2622,7 @@ eth.shh_uninstallFilter(<BN ...>)
 ```
 
 
-### eth.shh_getFilterChanges
+### vap.shh_getFilterChanges
 
 [index.js:shh_getFilterChanges](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2636,10 +2636,10 @@ Polling method for whisper filters. Returns new messages since the last call of 
 Result **["SHHFilterChange"]**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_getFilterChanges(<BN ...>)
+vap.shh_getFilterChanges(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2663,7 +2663,7 @@ eth.shh_getFilterChanges(<BN ...>)
 ```
 
 
-### eth.shh_getMessages
+### vap.shh_getMessages
 
 [index.js:shh_getMessages](../../../blob/master/src/index.js Source code on GitHub")
 
@@ -2677,10 +2677,10 @@ Get all messages matching a filter. Unlike 'shh_getFilterChanges' this returns a
 Result **["SHHFilterChange"]**.
 
 ```js
-const Eth = require('ethjs');
-const eth = new Eth(new Eth.HttpProvider('http://localhost:8545'));
+const Vap = require('vapjs');
+const vap = new Vap(new Vap.HttpProvider('http://localhost:8545'));
 
-eth.shh_getMessages(<BN ...>)
+vap.shh_getMessages(<BN ...>)
 .then((result) => {
   /*
   // result
@@ -2706,12 +2706,12 @@ eth.shh_getMessages(<BN ...>)
 
 ## Browser Builds
 
-`ethjs` provides production distributions for all of its modules that are ready for use in the browser right away. Simply include either `dist/ethjs.js` or `dist/ethjs.min.js` directly into an HTML file to start using this module. Note, an `Eth` object is made available globally.
+`vapjs` provides production distributions for all of its modules that are ready for use in the browser right away. Simply include either `dist/vapjs.js` or `dist/vapjs.min.js` directly into an HTML file to start using this module. Note, an `Vap` object is made available globally.
 
 ```html
-<script type="text/javascript" src="ethjs.min.js"></script>
+<script type="text/javascript" src="vapjs.min.js"></script>
 <script type="text/javascript">
-Eth(...);
+Vap(...);
 </script>
 ```
 
@@ -2724,8 +2724,8 @@ Hash: b267c64f72c936248871
 Version: webpack 2.1.0-beta.15
 Time: 928ms
        Asset    Size  Chunks             Chunk Names
-    ethjs.js  235 kB       0  [emitted]  main
-ethjs.js.map  291 kB       0  [emitted]  main
+    vapjs.js  235 kB       0  [emitted]  main
+vapjs.js.map  291 kB       0  [emitted]  main
   [24] multi main 28 bytes {0} [built]
     + 24 hidden modules
 
@@ -2733,28 +2733,28 @@ Hash: b7b0fe38a80ebbca42e2
 Version: webpack 2.1.0-beta.15
 Time: 3373ms
        Asset    Size  Chunks             Chunk Names
-ethjs.min.js  103 kB       0  [emitted]  main
+vapjs.min.js  103 kB       0  [emitted]  main
   [24] multi main 28 bytes {0} [built]
     + 24 hidden modules
 ```
 
-Note, even though `ethjs` should have transformed and polyfilled most of the requirements to run this module across most modern browsers. You may want to look at an additional polyfill for extra support.
+Note, even though `vapjs` should have transformed and polyfilled most of the requirements to run this module across most modern browsers. You may want to look at an additional polyfill for extra support.
 
 Use a polyfill service such as `Polyfill.io` to ensure complete cross-browser support:
 https://polyfill.io/
 
 ## Other Awesome Modules, Tools and Frameworks
 
-### **Ethereum Foundation**
-  - [web3.js](https://github.com/ethereum/web3.js) -- the original Ethereum JS swiss army knife
-  - [ethereumjs](https://github.com/ethereumjs) -- critical ethereum javascript infrastructure/community
-  - [browser-solidity](https://ethereum.github.io/browser-solidity) -- an in browser Solidity IDE
-  - [mists](https://github.com/ethereum/mist/releases) -- the official Ethereum wallet and browser
+### **Vapory Foundation**
+  - [web3.js](https://github.com/vaporyco/web3.js) -- the original Vapory JS swiss army knife
+  - [vaporyjs](https://github.com/vaporycojs) -- critical vapory javascript infrastructure/community
+  - [browser-solidity](https://vapory.github.io/browser-solidity) -- an in browser Solidity IDE
+  - [mists](https://github.com/vaporyco/mist/releases) -- the official Vapory wallet and browser
 
 ### Nodes
-  - [geth](https://github.com/ethereum/go-ethereum) Go-Ethereum (Ethereum Foundation)
-  - [parity](https://github.com/ethcore/parity) Rust-Ethereum build in Rust (Ethcore)
-  - [testrpc](https://github.com/ethereumjs/testrpc) JS-Testing Node (Ethereumjs)
+  - [gvap](https://github.com/vaporyco/go-vapory) Go-Vapory (Vapory Foundation)
+  - [parity](https://github.com/ethcore/parity) Rust-Vapory build in Rust (Vapcore)
+  - [testrpc](https://github.com/vaporycojs/testrpc) JS-Testing Node (Vaporyjs)
 
 ### Testing
   - [truffle](https://github.com/ConsenSys/truffle) -- a solidity/js dApp framework
@@ -2765,28 +2765,28 @@ https://polyfill.io/
   - [embark](https://github.com/iurimatias/embark-framework) -- a solidity/js dApp framework
 
 ### Wallets
-  - [mist](https://github.com/ethereum/mist/releases) -- turns your browser into an Ethereum enabled browser =D
-  - [geth](https://github.com/ethereum/go-ethereum) -- standard Ethereum wallet
-  - [parity](https://github.com/ethcore/parity) -- standard Ethereum wallet
-  - [ethers-wallet](https://github.com/ethers-io/ethers-wallet) -- an amazingly small Ethereum wallet
-  - [metamask](https://metamask.io/) -- turns your browser into an Ethereum enabled browser =D, a one click install **Chrome Extention**
-  - [eth-lightwallet](https://github.com/ConsenSys/eth-lightwallet) -- an HD wallet built in Javascript
+  - [mist](https://github.com/vaporyco/mist/releases) -- turns your browser into an Vapory enabled browser =D
+  - [gvap](https://github.com/vaporyco/go-vapory) -- standard Vapory wallet
+  - [parity](https://github.com/ethcore/parity) -- standard Vapory wallet
+  - [vapors-wallet](https://github.com/vapors-io/vapors-wallet) -- an amazingly small Vapory wallet
+  - [metamask](https://metamask.io/) -- turns your browser into an Vapory enabled browser =D, a one click install **Chrome Extention**
+  - [vap-lightwallet](https://github.com/ConsenSys/vap-lightwallet) -- an HD wallet built in Javascript
 
-## Our Relationship with Ethereum & EthereumJS
+## Our Relationship with Vapory & VaporyJS
 
- We would like to mention that we are not in any way affiliated with the Ethereum Foundation or `ethereumjs`. However, we love the work they do and work with them often to make Ethereum great! Our aim is to support the Ethereum ecosystem with a policy of diversity, modularity, simplicity, transparency, clarity, optimization and extensibility.
+ We would like to mention that we are not in any way affiliated with the Vapory Foundation or `vaporyjs`. However, we love the work they do and work with them often to make Vapory great! Our aim is to support the Vapory ecosystem with a policy of diversity, modularity, simplicity, transparency, clarity, optimization and extensibility.
 
- Many of our modules use code from `web3.js` and the `ethereumjs-` repositories. We thank the authors where we can in the relevant repositories. We use their code carefully, and make sure all test coverage is ported over and where possible, expanded on.
+ Many of our modules use code from `web3.js` and the `vaporyjs-` repositories. We thank the authors where we can in the relevant repositories. We use their code carefully, and make sure all test coverage is ported over and where possible, expanded on.
 
 ## Special Thanks
 
-`ethjs` was built by a strong community of Ethereum developers. A special thanks to:
+`vapjs` was built by a strong community of Vapory developers. A special thanks to:
 
   - [Fabian Vogelsteller](https://twitter.com/feindura?lang=en) - for his work on `Mist` and `web3.js`
   - [Tim Coulter](https://github.com/tcoulter) - for his work on `TestRPC` and `Truffle`
-  - [Aaron Davis](https://github.com/kumavis) - for his guidence and work on `MetaMask` and `ethereumjs`
-  - [Richard Moore](https://github.com/ricmoo) - for his work on `ethers-io` and `ethers-wallet` from which so much of `ethjs` is build from
+  - [Aaron Davis](https://github.com/kumavis) - for his guidence and work on `MetaMask` and `vaporyjs`
+  - [Richard Moore](https://github.com/ricmoo) - for his work on `vapors-io` and `vapors-wallet` from which so much of `vapjs` is build from
   - [Karl Floersch](https://twitter.com/karl_dot_tech?lang=en) - for his guidence and support
-  - [Martin Betsy](https://github.com/wanderer) - for his work on `ethereumjs`
-  - [Alex Beregszaszi](https://github.com/axic) - for his work on `ethereumjs`
-  - [Vitalik Buterin](https://twitter.com/VitalikButerin) - for creating `Ethereum`
+  - [Martin Betsy](https://github.com/wanderer) - for his work on `vaporyjs`
+  - [Alex Beregszaszi](https://github.com/axic) - for his work on `vaporyjs`
+  - [Vitalik Buterin](https://twitter.com/VitalikButerin) - for creating `Vapory`
