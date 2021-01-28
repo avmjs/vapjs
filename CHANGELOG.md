@@ -2,7 +2,7 @@
 
 1. Fix getTx unhandled promise rejection
 
-# 0.3.4 -- EthJS-RPC
+# 0.3.4 -- VapJS-RPC
 
 1. Fix RPC unhandled promise rejection.
 

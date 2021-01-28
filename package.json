@@ -1,33 +1,4 @@
 {
-  "_from": "vapjs",
-  "_id": "vapjs@0.3.6",
-  "_inBundle": false,
-  "_integrity": "sha512-9ojnSkV5XXSM5vo0pKgZpE+SNBPxqSUN0dZmMP5dBZVFOYctRd9tfaZ80Jnde3M4JrfUhhkbG5QFvewitaAY7Q==",
-  "_location": "/vapjs",
-  "_phantomChildren": {
-    "bn.js": "4.11.6",
-    "vapjs-format": "0.2.5",
-    "js-sha3": "0.5.5",
-    "number-to-bn": "1.7.0"
-  },
-  "_requested": {
-    "type": "tag",
-    "registry": true,
-    "raw": "vapjs",
-    "name": "vapjs",
-    "escapedName": "vapjs",
-    "rawSpec": "",
-    "saveSpec": null,
-    "fetchSpec": "latest"
-  },
-  "_requiredBy": [
-    "#USER",
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/vapjs/-/vapjs-0.3.6.tgz",
-  "_shasum": "c0d2b364e32c59d40fc7cd73f8103f370e99ad70",
-  "_spec": "vapjs",
-  "_where": "/home/nick",
   "author": {
     "name": "Nick Dodson",
     "email": "nick.dodson@consensys.net"
@@ -111,11 +82,11 @@
     "vapjs-query": "0.3.7",
     "vapjs-unit": "0.1.6",
     "vapjs-util": "0.1.3",
-    "js-sha3": "0.5.5",
+    "vapjs-sha3": "0.5.5",
     "number-to-bn": "1.7.0"
   },
   "deprecated": false,
-  "description": "A light-weight, highly optimised JS utility for Ethereum",
+  "description": "A light-weight, highly optimised JS utility for Vapory",
   "devDependencies": {
     "babel-cli": "6.18.0",
     "babel-core": "6.18.2",
@@ -154,8 +125,8 @@
     "eslint-plugin-jsx-a11y": "1.2.0",
     "eslint-plugin-react": "5.1.1",
     "vaporyjs-testrpc": "3.0.2",
-    "vapjs-account": "0.1.0",
-    "vapjs-signer": "0.1.0",
+    "vapjs-account": "0.1.4",
+    "vapjs-signer": "0.1.1",
     "eventsource-polyfill": "0.9.6",
     "istanbul": "0.4.5",
     "json-loader": "0.5.4",
@@ -163,7 +134,7 @@
     "mocha": "3.1.2",
     "pre-commit": "1.1.3",
     "rimraf": "2.3.4",
-    "@vapory/web3": "0.17.0-beta",
+    "@vapory/web3": "0.20.4-b",
     "webpack": "2.1.0-beta.15"
   },
   "engines": {
