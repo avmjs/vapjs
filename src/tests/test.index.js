@@ -1,6 +1,6 @@
 const assert = require('chai').assert;
 const TestRPC = require('vaporyjs-testrpc');
-const Web3 = require('web3');
+const Web3 = require('@vapory/web3');
 const provider = TestRPC.provider();
 const provider2 = TestRPC.provider();
 const Vap = require('../index.js');
