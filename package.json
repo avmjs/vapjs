@@ -78,7 +78,7 @@
     "vapjs-abi": "0.2.1",
     "vapjs-contract": "0.2.1",
     "vapjs-filter": "0.1.5",
-    "vapjs-provider-http": "0.1.6",
+    "vapjs-provider-http": "0.1.4",
     "vapjs-query": "0.3.7",
     "vapjs-unit": "0.1.6",
     "vapjs-util": "0.1.3",
